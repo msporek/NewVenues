@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurants · Warsaw New Venues · Last 30 Days (Apr 7 - May 7 2026)</title>
+  <style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 0 auto; padding: 0 1em 3em; color: #1a1a1a; line-height: 1.55; background: #f7f7fb; }
+a { color: #00695c; }
+.hero { padding: 2.5em 0 1.5em; border-bottom: 3px solid #00695c; margin-bottom: 1.5em; }
+.hero h1 { margin: 0 0 0.2em; font-size: 2.1em; color: #00695c; letter-spacing: -0.01em; }
+.hero-sub { margin: 0 0 0.6em; font-size: 1.1em; color: #555; font-weight: 500; }
+.hero-meta { margin: 0; color: #777; font-size: 0.95em; }
+.hero .hero-pl { color: #888; font-weight: 400; font-size: 0.7em; margin-left: 0.4em; }
+.hero .back { margin: 0 0 0.8em; font-size: 0.9em; }
+.hero .back a { color: #00695c; text-decoration: none; }
+.hero .back a:hover { text-decoration: underline; }
+.hero .back-pl { color: #888; }
+.intro { font-size: 1.05em; color: #444; margin: 0 0 1.5em; }
+.intro .intro-pl { display: block; color: #777; font-size: 0.95em; margin-top: 0.3em; }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 0 0 2em; }
+.cat-card { display: block; padding: 1.2em 1.4em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-decoration: none; color: inherit; transition: transform 0.1s ease, box-shadow 0.1s ease; border-left: 4px solid #00695c; }
+.cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.cat-card h2 { margin: 0 0 0.4em; font-size: 1.2em; color: #00695c; }
+.cat-card .cat-pl { color: #888; font-weight: 400; font-size: 0.85em; margin-left: 0.4em; }
+.cat-card .cat-count { margin: 0; color: #555; font-size: 0.95em; }
+.cat-restaurants  { border-left-color: #c62828; } .cat-restaurants  h2 { color: #c62828; }
+.cat-cafes        { border-left-color: #6d4c41; } .cat-cafes        h2 { color: #6d4c41; }
+.cat-bars         { border-left-color: #4527a0; } .cat-bars         h2 { color: #4527a0; }
+.cat-museums      { border-left-color: #6a1b9a; } .cat-museums      h2 { color: #6a1b9a; }
+.cat-family       { border-left-color: #f9a825; } .cat-family       h2 { color: #b87800; }
+.cat-entertainment{ border-left-color: #2e7d32; } .cat-entertainment h2 { color: #2e7d32; }
+.cat-other        { border-left-color: #455a64; } .cat-other        h2 { color: #455a64; }
+.hero-cat.cat-restaurants  { border-bottom-color: #c62828; } .hero-cat.cat-restaurants  h1 { color: #c62828; }
+.hero-cat.cat-cafes        { border-bottom-color: #6d4c41; } .hero-cat.cat-cafes        h1 { color: #6d4c41; }
+.hero-cat.cat-bars         { border-bottom-color: #4527a0; } .hero-cat.cat-bars         h1 { color: #4527a0; }
+.hero-cat.cat-museums      { border-bottom-color: #6a1b9a; } .hero-cat.cat-museums      h1 { color: #6a1b9a; }
+.hero-cat.cat-family       { border-bottom-color: #f9a825; } .hero-cat.cat-family       h1 { color: #b87800; }
+.hero-cat.cat-entertainment{ border-bottom-color: #2e7d32; } .hero-cat.cat-entertainment h1 { color: #2e7d32; }
+.hero-cat.cat-other        { border-bottom-color: #455a64; } .hero-cat.cat-other        h1 { color: #455a64; }
+.cat-restaurants .venue .route { background: #fdf3f3; border-left-color: #c62828; }
+.cat-restaurants .venue .route .map-link { color: #c62828; }
+.cat-restaurants .venue .links a { color: #c62828; }
+.venue { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1.2em 1.5em; margin-bottom: 1em; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.venue h2 { margin: 0 0 0.5em; color: #1a1a1a; font-size: 1.2em; }
+.venue p { margin: 0.4em 0; font-size: 0.95em; }
+.venue .label { font-weight: 600; color: #555; margin-right: 0.3em; }
+.venue .label-pl { color: #888; font-weight: 400; }
+.venue .addr-text { color: #333; }
+.venue .links { display: block; margin-top: 0.2em; }
+.venue .links a { display: inline-block; margin-right: 0.6em; font-size: 0.9em; color: #00695c; }
+.venue .opened time { font-weight: 600; color: #444; }
+.venue .route { background: #eef6f4; border-left: 3px solid #00695c; padding: 0.5em 0.8em; margin: 0.4em 0; border-radius: 0 4px 4px 0; }
+.venue .route-text { display: block; margin: 0.2em 0; color: #333; }
+.venue .map-link { font-size: 0.9em; color: #00695c; text-decoration: none; }
+.venue .map-link:hover { text-decoration: underline; }
+.venue .hours-text { color: #333; }
+.venue .info { margin: 0.6em 0 0; padding-top: 0.5em; border-top: 1px solid #f0f0f5; }
+.venue .info-en { color: #1a1a1a; margin: 0.2em 0; }
+.venue .info-pl { color: #666; margin: 0.2em 0; font-size: 0.93em; }
+.notes { margin-top: 2.5em; padding: 1.25em 1.5em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; }
+.notes h2 { margin: 0 0 0.8em; color: #c62828; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 0.4em; }
+.notes h3 { margin: 0.8em 0 0.3em; color: #555; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.05em; }
+.notes-pl h3 { color: #d32f2f; }
+.notes ul { margin: 0.3em 0 0; padding-left: 1.3em; }
+.notes li { margin: 0.3em 0; font-size: 0.93em; }
+footer { margin-top: 2em; text-align: center; color: #999; font-size: 0.85em; padding-top: 1.5em; border-top: 1px solid #eee; }
+footer a { color: #00695c; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  body { padding: 0 0.8em 2em; }
+  .hero { padding: 1.5em 0 1em; }
+  .hero h1 { font-size: 1.6em; }
+  .venue { padding: 0.9em 1em; }
+  .cat-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body class="cat-restaurants">
+  <header class="hero hero-cat cat-restaurants">
+    <p class="back"><a href="index.html">&larr; All categories <span class="back-pl">· Wszystkie kategorie</span></a></p>
+    <h1>Restaurants <span class="hero-pl">· Restauracje</span></h1>
+    <p class="hero-meta">Warsaw city only · last 30 days (Apr 7 - May 7 2026) · searched 2026-05-07 · 8 venues</p>
+  </header>
+
+  <main>
+
+    <article class="venue">
+      <h2>Olio Pizza Napoletana</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Złota 83, Wola, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/olio.napoletana.wawa" target="_blank" rel="noopener">instagram.com/olio.napoletana.wawa</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-05">May 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~14 km, approx. 28 min via Trasa Łazienkowska and Towarowa.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Z%C5%82ota+83,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Centrum and M2 to Rondo Daszyńskiego, walk ~5 min to ul. Złota. Total ~50 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Z%C5%82ota+83" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Neapolitan pizzeria with long-fermented dough; menu spans classic rossa and bianca pies plus seasonal compositions with 'nduja, mortadella, and roasted peppers. Address sits in the rapidly-developing Wola side of central Warsaw.</p>
+        <p class="info-pl">Pizzeria neapolitańska na długo fermentowanym cieście; w karcie zarówno klasyczne pizze rossa i bianca, jak i sezonowe kompozycje z 'ndują, mortadelą i pieczoną papryką. Lokal w dynamicznie rozwijającej się centralnej części Woli.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Malina</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Emilii Plater 25, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/malina.warsaw" target="_blank" rel="noopener">instagram.com/malina.warsaw</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-05">May 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~11 km, approx. 24 min via al. Sobieskiego and al. Niepodległości.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Emilii+Plater+25,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Centrum, walk ~6 min north along Emilii Plater. Total ~45 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Emilii+Plater+25" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Restaurant and cocktail bar combined into one venue — leans lifestyle/evening rather than lunch crowd. Designed for after-work dinners, dates, and pre-night-out drinks in central Śródmieście.</p>
+        <p class="info-pl">Restauracja i cocktail bar w jednym lokalu — bardziej lifestyle'owy niż obiadowy charakter. Pomyślany na kolacje po pracy, randki i początek wieczornego wyjścia w centrum Śródmieścia.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Limone</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Wierzbowa 9/11, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/limone.warsaw" target="_blank" rel="noopener">instagram.com/limone.warsaw</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~11 km, approx. 25 min via al. Sobieskiego and Plac Trzech Krzyży.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Wierzbowa+9%2F11,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Świętokrzyska, walk ~5 min north to Plac Teatralny. Total ~45 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Wierzbowa+9%2F11" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Modern Italian restaurant on Plac Teatralny mixing classic Italian cooking with city-bistro presentation; emphasis on simple ingredients, seasonality, and quality. Address suggests an elegant rather than casual format.</p>
+        <p class="info-pl">Nowoczesna włoska restauracja przy Placu Teatralnym, łącząca klasyczną kuchnię włoską z miejskim stylem podania; nacisk na proste składniki, sezonowość i jakość. Adres sugeruje raczej elegancki niż casualowy charakter.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Baires</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Leszczyńska 6, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/baireswarsaw" target="_blank" rel="noopener">instagram.com/baireswarsaw</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 25 min via S2 and Trasa Łazienkowska to Solec.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Leszczy%C5%84ska+6,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika and tram to Solec. Total ~50 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Leszczy%C5%84ska+6" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Argentine steakhouse focusing on grilled meats — bife de chorizo, asado-style cuts, and chimichurri sides. Rare format in Warsaw; the Buenos Aires reference in the name is the explicit pitch.</p>
+        <p class="info-pl">Argentyński steakhouse z naciskiem na mięsa z grilla — bife de chorizo, asado, chimichurri jako dodatki. Format wciąż rzadki w Warszawie; nawiązanie do Buenos Aires w nazwie to wprost komunikowany kierunek.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Warszawski Tygrys</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">pl. Konstytucji 5, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/tygrys.warszawa" target="_blank" rel="noopener">instagram.com/tygrys.warszawa</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via al. Sobieskiego, al. Niepodległości and Marszałkowska.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=plac+Konstytucji+5,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika, walk ~3 min north to Plac Konstytucji. Total ~38 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Konstytucji+5" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Modern Polish kitchen with Asian inspirations on a flagship Plac Konstytucji address. Crosses the dumpling-and-broth tradition with East-Asian technique and seasonings.</p>
+        <p class="info-pl">Nowoczesna kuchnia polska z azjatyckimi inspiracjami pod prestiżowym adresem na Placu Konstytucji. Krzyżuje tradycję pierogów i wywarów ze wschodnioazjatycką techniką i przyprawami.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Bocado Food &amp; Cocktails</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Wspólna 35, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/bocado_foodandcoctails" target="_blank" rel="noopener">instagram.com/bocado_foodandcoctails</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via al. Sobieskiego and al. Niepodległości.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Wsp%C3%B3lna+35,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika or Centrum, walk ~6 min to Wspólna. Total ~42 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Wsp%C3%B3lna+35" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Mediterranean small-plates restaurant paired with a serious cocktail program — Spanish, Italian, and Southern European influences. Targets the share-and-drink dinner format spreading across Śródmieście.</p>
+        <p class="info-pl">Restauracja w formule śródziemnomorskich małych dań z poważnym programem koktajlowym — inspiracje hiszpańskie, włoskie, południowoeuropejskie. Wpisuje się w rozprzestrzeniający się w Śródmieściu format dzielonej kolacji z drinkami.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>No. 46</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Krucza 46, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/no46.warsaw" target="_blank" rel="noopener">instagram.com/no46.warsaw</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via Trasa Łazienkowska and al. Niepodległości.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Krucza+46,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika, walk ~6 min east on Koszykowa to Krucza. Total ~40 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Krucza+46" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">All-day breakfast and brunch concept catering to morning meetings, work-with-coffee, and casual lunches. Part of the wave of Warsaw venues betting on the day-time crowd rather than dinner service.</p>
+        <p class="info-pl">Lokal w formule śniadaniowo-brunchowej all-day, pomyślany pod poranne spotkania, pracę przy kawie i niezobowiązujące lunche. Wpisuje się w warszawski trend lokali stawiających na ruch dzienny zamiast kolacji.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Foczka Warszawska</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Emilii Plater 4, Śródmieście, Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/foczka.warszawska" target="_blank" rel="noopener">instagram.com/foczka.warszawska</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-04">April 2026</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via Trasa Łazienkowska and Marszałkowska.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Emilii+Plater+4,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika, walk ~7 min east to Emilii Plater. Total ~42 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Emilii+Plater+4" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">Focaccia counter and Italian sandwich bar — fresh-pulled focaccia with antipasti fillings plus a few hot mains. Casual format aimed at lunch traffic and quick takeaway.</p>
+        <p class="info-pl">Bar z włoską focaccią i kanapkami — świeżo wypiekana focaccia z antipasti i kilka ciepłych dań. Casualowy format pod ruch lunchowy i szybki takeaway.</p>
+      </div>
+    </article>
+
+  </main>
+
+  <section class="notes">
+    <h2>Notes · Uwagi</h2>
+    <div class="notes-en">
+      <h3>EN</h3>
+      <ul>
+        <li>All eight venues confirmed via miumag.pl April and May 2026 "nowe restauracje" features and the venues' own Instagram accounts. These are the strongest-press April-May 2026 openings inside Warsaw city limits.</li>
+        <li>Hours could not be confirmed from secondary sources for any venue. Click each Instagram link for the venue's currently-published schedule before visiting.</li>
+        <li>Public transport routes are estimates anchored on the Sarmacka stop and Metro M1 — the jakdojade link gives the live timetable and exact transfers; treat the time estimates as ±10 min.</li>
+        <li>Excluded by date: Kalbas (Hoża 62, March 2026), Yamas (Świętokrzyska 30, February 2026), Osteria da Gia (Wilcza 8, December 2025), Supperlardo (Chmielna 13A, December 2025) — all before the Apr 7 cutoff.</li>
+        <li>Excluded by category filter: HOOD. (Poznańska 37, March 2026 — café-bistro hybrid), Lou Lou Bakery (Kolejowa 43A — bakery), Helisa Collagen Cafe (Moliera 6 — wellness café), Lusso Cafe (Krucza 23 — Turkish café), Macarons Store (Zgoda 3/5 — patisserie). Re-run with no filter or "cafes" to include these.</li>
+        <li>Sisters Restaurant (Marszałkowska 68/70 — Ukrainian) appeared in the spring 2026 list with no confirmed opening date — omitted.</li>
+      </ul>
+    </div>
+    <div class="notes-pl">
+      <h3>PL</h3>
+      <ul>
+        <li>Wszystkie osiem lokali zweryfikowanych na podstawie kwietniowych i majowych artykułów miumag.pl o nowych otwarciach oraz Instagramów samych restauracji. To najmocniej omawiane otwarcia kwiecień-maj 2026 w granicach Warszawy.</li>
+        <li>Godzin otwarcia nie udało się potwierdzić ze źródeł zewnętrznych dla żadnego lokalu. Sprawdź aktualny grafik na Instagramie restauracji przed wizytą.</li>
+        <li>Trasy transportu publicznego są szacunkowe — bazują na przystanku Sarmacka i M1; link do jakdojade pokaże rozkład na żywo i dokładne przesiadki, czas traktuj z tolerancją ±10 min.</li>
+        <li>Pominięte ze względu na datę: Kalbas (Hoża 62, marzec 2026), Yamas (Świętokrzyska 30, luty 2026), Osteria da Gia (Wilcza 8, grudzień 2025), Supperlardo (Chmielna 13A, grudzień 2025) — wszystkie przed 7 kwietnia.</li>
+        <li>Pominięte przez filtr kategorii: HOOD. (Poznańska 37, marzec 2026 — hybryda kawiarnia/bistro), Lou Lou Bakery (Kolejowa 43A — piekarnia), Helisa Collagen Cafe (Moliera 6 — wellness/kawiarnia), Lusso Cafe (Krucza 23 — turecka kawiarnia), Macarons Store (Zgoda 3/5 — cukiernia). Ponów bez filtra lub z filtrem "kawiarnie", by je włączyć.</li>
+        <li>Sisters Restaurant (Marszałkowska 68/70 — ukraińska) pojawiła się na wiosennej liście bez potwierdzonej daty otwarcia — pominięta.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p><a href="index.html">&larr; All categories · Wszystkie kategorie</a></p>
+  </footer>
+</body>
+</html>
