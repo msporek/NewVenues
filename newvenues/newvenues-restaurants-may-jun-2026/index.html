@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warsaw New Venues · May-Jun 2026 (last 30 days)</title>
+  <style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 0 auto; padding: 0 1em 3em; color: #1a1a1a; line-height: 1.55; background: #f7f7fb; }
+a { color: #00695c; }
+.hero { padding: 2.5em 0 1.5em; border-bottom: 3px solid #00695c; margin-bottom: 1.5em; }
+.hero h1 { margin: 0 0 0.2em; font-size: 2.1em; color: #00695c; letter-spacing: -0.01em; }
+.hero-sub { margin: 0 0 0.6em; font-size: 1.1em; color: #555; font-weight: 500; }
+.hero-meta { margin: 0; color: #777; font-size: 0.95em; }
+.hero .hero-pl { color: #888; font-weight: 400; font-size: 0.7em; margin-left: 0.4em; }
+.hero .back { margin: 0 0 0.8em; font-size: 0.9em; }
+.hero .back a { color: #00695c; text-decoration: none; }
+.hero .back a:hover { text-decoration: underline; }
+.hero .back-pl { color: #888; }
+.intro { font-size: 1.05em; color: #444; margin: 0 0 1.5em; }
+.intro .intro-pl { display: block; color: #777; font-size: 0.95em; margin-top: 0.3em; }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 0 0 2em; }
+.cat-card { display: block; padding: 1.2em 1.4em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-decoration: none; color: inherit; transition: transform 0.1s ease, box-shadow 0.1s ease; border-left: 4px solid #00695c; }
+.cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.cat-card h2 { margin: 0 0 0.4em; font-size: 1.2em; color: #00695c; }
+.cat-card .cat-pl { color: #888; font-weight: 400; font-size: 0.85em; margin-left: 0.4em; }
+.cat-card .cat-count { margin: 0; color: #555; font-size: 0.95em; }
+.cat-restaurants  { border-left-color: #c62828; } .cat-restaurants  h2 { color: #c62828; }
+.cat-cafes        { border-left-color: #6d4c41; } .cat-cafes        h2 { color: #6d4c41; }
+.cat-bars         { border-left-color: #4527a0; } .cat-bars         h2 { color: #4527a0; }
+.cat-museums      { border-left-color: #6a1b9a; } .cat-museums      h2 { color: #6a1b9a; }
+.cat-family       { border-left-color: #f9a825; } .cat-family       h2 { color: #b87800; }
+.cat-entertainment{ border-left-color: #2e7d32; } .cat-entertainment h2 { color: #2e7d32; }
+.cat-other        { border-left-color: #455a64; } .cat-other        h2 { color: #455a64; }
+.hero-cat.cat-restaurants  { border-bottom-color: #c62828; } .hero-cat.cat-restaurants  h1 { color: #c62828; }
+.hero-cat.cat-cafes        { border-bottom-color: #6d4c41; } .hero-cat.cat-cafes        h1 { color: #6d4c41; }
+.hero-cat.cat-bars         { border-bottom-color: #4527a0; } .hero-cat.cat-bars         h1 { color: #4527a0; }
+.hero-cat.cat-museums      { border-bottom-color: #6a1b9a; } .hero-cat.cat-museums      h1 { color: #6a1b9a; }
+.hero-cat.cat-family       { border-bottom-color: #f9a825; } .hero-cat.cat-family       h1 { color: #b87800; }
+.hero-cat.cat-entertainment{ border-bottom-color: #2e7d32; } .hero-cat.cat-entertainment h1 { color: #2e7d32; }
+.hero-cat.cat-other        { border-bottom-color: #455a64; } .hero-cat.cat-other        h1 { color: #455a64; }
+.venue { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1.2em 1.5em; margin-bottom: 1em; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.venue h2 { margin: 0 0 0.5em; color: #1a1a1a; font-size: 1.2em; }
+.venue p { margin: 0.4em 0; font-size: 0.95em; }
+.venue .label { font-weight: 600; color: #555; margin-right: 0.3em; }
+.venue .label-pl { color: #888; font-weight: 400; }
+.venue .addr-text { color: #333; }
+.venue .links { display: block; margin-top: 0.2em; }
+.venue .links a { display: inline-block; margin-right: 0.6em; font-size: 0.9em; color: #00695c; }
+.venue .opened time { font-weight: 600; color: #444; }
+.venue .route { background: #eef6f4; border-left: 3px solid #00695c; padding: 0.5em 0.8em; margin: 0.4em 0; border-radius: 0 4px 4px 0; }
+.venue .route-text { display: block; margin: 0.2em 0; color: #333; }
+.venue .map-link { font-size: 0.9em; color: #00695c; text-decoration: none; }
+.venue .map-link:hover { text-decoration: underline; }
+.venue .hours-text { color: #333; }
+.venue .info { margin: 0.6em 0 0; padding-top: 0.5em; border-top: 1px solid #f0f0f5; }
+.venue .info-en { color: #1a1a1a; margin: 0.2em 0; }
+.venue .info-pl { color: #666; margin: 0.2em 0; font-size: 0.93em; }
+.notes { margin-top: 2.5em; padding: 1.25em 1.5em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; }
+.notes h2 { margin: 0 0 0.8em; color: #00695c; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 0.4em; }
+.notes h3 { margin: 0.8em 0 0.3em; color: #555; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.05em; }
+.notes-pl h3 { color: #d32f2f; }
+.notes ul { margin: 0.3em 0 0; padding-left: 1.3em; }
+.notes li { margin: 0.3em 0; font-size: 0.93em; }
+footer { margin-top: 2em; text-align: center; color: #999; font-size: 0.85em; padding-top: 1.5em; border-top: 1px solid #eee; }
+footer a { color: #00695c; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  body { padding: 0 0.8em 2em; }
+  .hero { padding: 1.5em 0 1em; }
+  .hero h1 { font-size: 1.6em; }
+  .venue { padding: 0.9em 1em; }
+  .cat-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Warsaw New Venues</h1>
+    <p class="hero-sub">Nowe miejsca w Warszawie</p>
+    <p class="hero-meta">Warsaw city (Mokotów / Wilanów / Śródmieście emphasis) · last 30 days (May 12 - Jun 12 2026) · restaurants · searched 2026-06-12 · 3 venues</p>
+  </header>
+
+  <main>
+    <p class="intro">
+      Newly-opened restaurants in Warsaw during the last 30 days — May 12 to June 12, 2026. Thin month: no qualifying new restaurants in Mokotów or Wilanów; all three landed in Śródmieście and Saska Kępa (Praga Południe).
+      <span class="intro-pl">Świeżo otwarte restauracje w Warszawie w ciągu ostatnich 30 dni — 12 maja do 12 czerwca 2026. Chudy miesiąc: brak nowych otwarć na Mokotowie i w Wilanowie; wszystkie trzy adresy są na Śródmieściu i Saskiej Kępie (Praga Południe).</span>
+    </p>
+
+    <section class="cat-grid">
+      <a class="cat-card cat-restaurants" href="restaurants.html">
+        <h2>Restaurants <span class="cat-pl">· Restauracje</span></h2>
+        <p class="cat-count">3 new venues</p>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Generated 2026-06-12 · Sources include <a href="https://warsawfoodie.pl/" target="_blank" rel="noopener">warsawfoodie.pl</a>, <a href="https://miumag.pl/" target="_blank" rel="noopener">miumag.pl</a>, <a href="https://palcelizac.pl/" target="_blank" rel="noopener">palcelizac.pl</a>, <a href="https://foodanddesign.pl/" target="_blank" rel="noopener">foodanddesign.pl</a>, <a href="https://www.inyourpocket.com/warsaw" target="_blank" rel="noopener">inyourpocket.com</a>, and the venue Instagram accounts linked on the subpage.</p>
+  </footer>
+</body>
+</html>
