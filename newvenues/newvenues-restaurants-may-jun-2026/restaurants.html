@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurants · Warsaw New Venues · May-Jun 2026 (last 30 days)</title>
+  <style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 0 auto; padding: 0 1em 3em; color: #1a1a1a; line-height: 1.55; background: #f7f7fb; }
+a { color: #00695c; }
+.hero { padding: 2.5em 0 1.5em; border-bottom: 3px solid #00695c; margin-bottom: 1.5em; }
+.hero h1 { margin: 0 0 0.2em; font-size: 2.1em; color: #00695c; letter-spacing: -0.01em; }
+.hero-sub { margin: 0 0 0.6em; font-size: 1.1em; color: #555; font-weight: 500; }
+.hero-meta { margin: 0; color: #777; font-size: 0.95em; }
+.hero .hero-pl { color: #888; font-weight: 400; font-size: 0.7em; margin-left: 0.4em; }
+.hero .back { margin: 0 0 0.8em; font-size: 0.9em; }
+.hero .back a { color: #00695c; text-decoration: none; }
+.hero .back a:hover { text-decoration: underline; }
+.hero .back-pl { color: #888; }
+.intro { font-size: 1.05em; color: #444; margin: 0 0 1.5em; }
+.intro .intro-pl { display: block; color: #777; font-size: 0.95em; margin-top: 0.3em; }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 0 0 2em; }
+.cat-card { display: block; padding: 1.2em 1.4em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-decoration: none; color: inherit; transition: transform 0.1s ease, box-shadow 0.1s ease; border-left: 4px solid #00695c; }
+.cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.cat-card h2 { margin: 0 0 0.4em; font-size: 1.2em; color: #00695c; }
+.cat-card .cat-pl { color: #888; font-weight: 400; font-size: 0.85em; margin-left: 0.4em; }
+.cat-card .cat-count { margin: 0; color: #555; font-size: 0.95em; }
+.cat-restaurants  { border-left-color: #c62828; } .cat-restaurants  h2 { color: #c62828; }
+.cat-cafes        { border-left-color: #6d4c41; } .cat-cafes        h2 { color: #6d4c41; }
+.cat-bars         { border-left-color: #4527a0; } .cat-bars         h2 { color: #4527a0; }
+.cat-museums      { border-left-color: #6a1b9a; } .cat-museums      h2 { color: #6a1b9a; }
+.cat-family       { border-left-color: #f9a825; } .cat-family       h2 { color: #b87800; }
+.cat-entertainment{ border-left-color: #2e7d32; } .cat-entertainment h2 { color: #2e7d32; }
+.cat-other        { border-left-color: #455a64; } .cat-other        h2 { color: #455a64; }
+.hero-cat.cat-restaurants  { border-bottom-color: #c62828; } .hero-cat.cat-restaurants  h1 { color: #c62828; }
+.hero-cat.cat-cafes        { border-bottom-color: #6d4c41; } .hero-cat.cat-cafes        h1 { color: #6d4c41; }
+.hero-cat.cat-bars         { border-bottom-color: #4527a0; } .hero-cat.cat-bars         h1 { color: #4527a0; }
+.hero-cat.cat-museums      { border-bottom-color: #6a1b9a; } .hero-cat.cat-museums      h1 { color: #6a1b9a; }
+.hero-cat.cat-family       { border-bottom-color: #f9a825; } .hero-cat.cat-family       h1 { color: #b87800; }
+.hero-cat.cat-entertainment{ border-bottom-color: #2e7d32; } .hero-cat.cat-entertainment h1 { color: #2e7d32; }
+.hero-cat.cat-other        { border-bottom-color: #455a64; } .hero-cat.cat-other        h1 { color: #455a64; }
+.venue { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1.2em 1.5em; margin-bottom: 1em; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.venue h2 { margin: 0 0 0.5em; color: #1a1a1a; font-size: 1.2em; }
+.venue p { margin: 0.4em 0; font-size: 0.95em; }
+.venue .label { font-weight: 600; color: #555; margin-right: 0.3em; }
+.venue .label-pl { color: #888; font-weight: 400; }
+.venue .addr-text { color: #333; }
+.venue .links { display: block; margin-top: 0.2em; }
+.venue .links a { display: inline-block; margin-right: 0.6em; font-size: 0.9em; color: #00695c; }
+.venue .opened time { font-weight: 600; color: #444; }
+.venue .route { background: #eef6f4; border-left: 3px solid #00695c; padding: 0.5em 0.8em; margin: 0.4em 0; border-radius: 0 4px 4px 0; }
+.venue .route-text { display: block; margin: 0.2em 0; color: #333; }
+.venue .map-link { font-size: 0.9em; color: #00695c; text-decoration: none; }
+.venue .map-link:hover { text-decoration: underline; }
+.venue .hours-text { color: #333; }
+.venue .info { margin: 0.6em 0 0; padding-top: 0.5em; border-top: 1px solid #f0f0f5; }
+.venue .info-en { color: #1a1a1a; margin: 0.2em 0; }
+.venue .info-pl { color: #666; margin: 0.2em 0; font-size: 0.93em; }
+.notes { margin-top: 2.5em; padding: 1.25em 1.5em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; }
+.notes h2 { margin: 0 0 0.8em; color: #00695c; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 0.4em; }
+.notes h3 { margin: 0.8em 0 0.3em; color: #555; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.05em; }
+.notes-pl h3 { color: #d32f2f; }
+.notes ul { margin: 0.3em 0 0; padding-left: 1.3em; }
+.notes li { margin: 0.3em 0; font-size: 0.93em; }
+footer { margin-top: 2em; text-align: center; color: #999; font-size: 0.85em; padding-top: 1.5em; border-top: 1px solid #eee; }
+footer a { color: #00695c; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  body { padding: 0 0.8em 2em; }
+  .hero { padding: 1.5em 0 1em; }
+  .hero h1 { font-size: 1.6em; }
+  .venue { padding: 0.9em 1em; }
+  .cat-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <header class="hero hero-cat cat-restaurants">
+    <p class="back"><a href="index.html">&larr; All categories <span class="back-pl">· Wszystkie kategorie</span></a></p>
+    <h1>Restaurants <span class="hero-pl">· Restauracje</span></h1>
+    <p class="hero-meta">Warsaw city (Mokotów / Wilanów / Śródmieście emphasis) · last 30 days (May 12 - Jun 12 2026) · searched 2026-06-12 · 3 venues</p>
+  </header>
+
+  <main>
+    <article class="venue">
+      <h2>Jutro Balkan Bistro</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Zwycięzców 57, Saska Kępa, 03-936 Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/jutrobistro" target="_blank" rel="noopener">instagram.com/jutrobistro</a>
+          <a href="https://www.facebook.com/p/jutro-balkan-bistro-100083060176116/" target="_blank" rel="noopener">facebook.com</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-05">2026-05</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~9 km, approx. 20 min via Trasa Łazienkowska and Most Łazienkowski to Saska Kępa.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Zwyci%C4%99zc%C3%B3w+57,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika, tram across the river toward Saska Kępa, walk to Zwycięzców. Total ~55 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Zwyci%C4%99zc%C3%B3w+57" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">Mon-Sat 12:00-22:00, Sun 12:00-21:00</span></p>
+      <div class="info">
+        <p class="info-en">Balkan bistro returning to Warsaw at a new Saska Kępa address after 3.5 years on Marszałkowska. Menu centers on ćevapčići, pljeskavica with kajmak, mini burek, sarma, stuffed eggplant, plus the house specialty pitica — a Balkan pastry in lamb-with-ajvar, spinach-and-feta, or mixed-cheese versions.</p>
+        <p class="info-pl">Bistro bałkańskie wracające do Warszawy pod nowym adresem na Saskiej Kępie po 3,5 roku przy Marszałkowskiej. W menu ćevapčići, pljeskavica z kajmakiem, mini burek, sarma, faszerowany bakłażan oraz autorska pitica — bałkańskie pieczone ciasto w wersjach z jagnięciną i ajvarem, ze szpinakiem i fetą lub z mieszanką serów.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Ballaro</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Śniadeckich 18, Śródmieście, 00-656 Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/ballaro_warsaw" target="_blank" rel="noopener">instagram.com/ballaro_warsaw</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-05">2026-05</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via al. Sobieskiego, al. Niepodległości and Polna.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+%C5%9Aniadeckich+18,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika, walk ~5 min east along Koszykowa and turn onto Śniadeckich. Total ~38 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=%C5%9Aniadeckich+18" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">Tue-Thu 17:00-22:00, Fri-Sat 12:00-23:00, Sun 12:00-20:00, Mon closed</span></p>
+      <div class="info">
+        <p class="info-en">Authorial Mediterranean restaurant named for Palermo's Ballarò market, opened by Giacomo Carreca (formerly co-owner of Madre). Menu reads like a tasting-led brief: squid crudo with peas and guanciale, horse tartare, white asparagus with vanilla-almond sauce, Iberico skewers; mains include rib-eye in Madeira, turbot pavé, piri piri chicken and chermoula risotto.</p>
+        <p class="info-pl">Autorska restauracja z kuchnią śródziemnomorską, nazwana od palermitańskiego targu Ballarò, otwarta przez Giacomo Carreca (wcześniej współwłaściciela Madre). Menu w stylu degustacyjnym: crudo z kalmara z groszkiem i guanciale, tatar z konia, biały szparag z sosem waniliowo-migdałowym, szaszłyki Iberico; z głównych: rib-eye w sosie maderze, pavé z turbota, kurczak piri piri, risotto chermoula.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>House of Schnitzel</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. E. Plater 47, Śródmieście, 00-118 Warszawa</span>
+        <span class="links">
+          <a href="https://warsawfoodie.pl/2026/05/house-of-schnitzel-nowy-lokal-ze-sznyclami-w-roznych-odslonach/" target="_blank" rel="noopener">warsawfoodie.pl</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-05">2026-05</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~10 km, approx. 22 min via Trasa Łazienkowska and Marszałkowska.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Emilii+Plater+47,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, then M1 to Politechnika or Centrum, walk ~7 min west on Świętokrzyska to Plater. Total ~40 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Emilii+Plater+47" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">Mon-Thu 11:00-23:30, Fri-Sun 11:00-00:00</span></p>
+      <div class="info">
+        <p class="info-en">Schnitzel-only concept doing the cutlet in every form — classic plate, bowl with rice/fries/pasta and slaws, sandwich, schnitzel burger. Fries come plain, garlic-parmesan or chili. Casual, fast-format, late-night-friendly. Price band 20-40 PLN.</p>
+        <p class="info-pl">Koncept w pełni schnitzlowy — sznycel klasycznie na talerzu, w bowlu z ryżem, frytkami, makaronem i surówkami, w kanapce lub w wersji burgera. Frytki w trzech odsłonach: klasyczne, czosnkowo-parmezanowe, chili. Casualowy format na szybki lunch i kolacje do późna. Cena 20-40 PLN.</p>
+      </div>
+    </article>
+  </main>
+
+  <section class="notes">
+    <h2>Notes · Uwagi</h2>
+    <div class="notes-en">
+      <h3>EN</h3>
+      <ul>
+        <li>Thin month. The April-May window was much busier; mid-May to mid-June produced only these three restaurant-class openings in the Warsaw blogs we sweep. If you want a wider net, re-run with "last 2 months" or "last 3 months".</li>
+        <li>Mokotów and Wilanów drew zero new restaurant openings inside this window. Babcia Miesza (Puławska 107D, Mokotów) is a great Polish-bistro recent opening but Warsaw Foodie confirms it opened in March 2026 — outside the 30-day cutoff. No Wilanów openings surfaced at all.</li>
+        <li>Excluded by date (just outside the window): Madame Lucy (Czorsztyńska 1, Wola, Chinese — "a few months ago" per the June 5 article, so likely March-April), Tables (Ząbkowska 7, Praga Północ, late April), La Cucina di Justyna (Szulborska 3/5, Wola — autumn 2025).</li>
+        <li>Excluded by category: ONNI Bakery Cafe (Korean bakery/café, May 17), Once (all-day breakfast café in Czerniaków, May 31), Irenka Cafe (Redutowa 48, Wola, breakfast café — also opened Feb 2026). Re-run with "cafes" filter to include them.</li>
+        <li>House of Schnitzel's exact opening date wasn't published; Warsaw Foodie's May 20 piece called it "a few weeks" new, so early-May. Treat the 2026-05 opening month as a best estimate.</li>
+        <li>Public transport routes are estimates anchored on bus stop Sarmacka + Metro M1 — the jakdojade link gives the live timetable and exact transfers; treat the time estimates as ±10 min.</li>
+      </ul>
+    </div>
+    <div class="notes-pl">
+      <h3>PL</h3>
+      <ul>
+        <li>Chudy miesiąc. Okno kwiecień-maj dało dużo więcej otwarć; między 12 maja a 12 czerwca warszawskie blogi kulinarne wychwyciły tylko te trzy otwarcia w klasie restauracja. Jeśli chcesz szerszego zestawu — ponów z "ostatnie 2 miesiące" lub "ostatnie 3 miesiące".</li>
+        <li>Mokotów i Wilanów: zero nowych otwarć restauracyjnych w tym oknie. Babcia Miesza (Puławska 107D, Mokotów) to świetne polskie bistro, ale Warsaw Foodie potwierdza otwarcie w marcu 2026 — poza 30-dniowym cut-offem. Wilanów nie wyłonił żadnego nowego adresu.</li>
+        <li>Pominięte ze względu na datę (tuż poza oknem): Madame Lucy (Czorsztyńska 1, Wola, chińska — "kilka miesięcy temu" wg artykułu z 5 czerwca, czyli prawdopodobnie marzec-kwiecień), Tables (Ząbkowska 7, Praga Północ, koniec kwietnia), La Cucina di Justyna (Szulborska 3/5, Wola — jesień 2025).</li>
+        <li>Pominięte przez filtr kategorii: ONNI Bakery Cafe (koreańska piekarnia/kawiarnia, 17 maja), Once (całodzienne śniadania, Czerniaków, 31 maja), Irenka Cafe (Redutowa 48, Wola, kawiarnia śniadaniowa — otwarcie luty 2026). Ponów z filtrem "kawiarnie", żeby je włączyć.</li>
+        <li>Dokładnej daty otwarcia House of Schnitzel źródła nie podają; Warsaw Foodie z 20 maja pisze "kilka tygodni temu", czyli na początku maja. Datę 2026-05 traktuj jako szacunek.</li>
+        <li>Trasy transportu publicznego są szacunkowe — bazują na przystanku Sarmacka i M1; link do jakdojade pokaże rozkład na żywo i dokładne przesiadki, czas traktuj z tolerancją ±10 min.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p><a href="index.html">&larr; All categories · Wszystkie kategorie</a></p>
+  </footer>
+</body>
+</html>
