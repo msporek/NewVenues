@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurants · Warsaw New Venues · Aug-Sep 2026</title>
+  <style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 0 auto; padding: 0 1em 3em; color: #1a1a1a; line-height: 1.55; background: #f7f7fb; }
+a { color: #00695c; }
+.hero { padding: 2.5em 0 1.5em; border-bottom: 3px solid #00695c; margin-bottom: 1.5em; }
+.hero h1 { margin: 0 0 0.2em; font-size: 2.1em; color: #00695c; letter-spacing: -0.01em; }
+.hero-sub { margin: 0 0 0.6em; font-size: 1.1em; color: #555; font-weight: 500; }
+.hero-meta { margin: 0; color: #777; font-size: 0.95em; }
+.hero .hero-pl { color: #888; font-weight: 400; font-size: 0.7em; margin-left: 0.4em; }
+.hero .back { margin: 0 0 0.8em; font-size: 0.9em; }
+.hero .back a { color: #00695c; text-decoration: none; }
+.hero .back a:hover { text-decoration: underline; }
+.hero .back-pl { color: #888; }
+.intro { font-size: 1.05em; color: #444; margin: 0 0 1.5em; }
+.intro .intro-pl { display: block; color: #777; font-size: 0.95em; margin-top: 0.3em; }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 0 0 2em; }
+.cat-card { display: block; padding: 1.2em 1.4em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-decoration: none; color: inherit; transition: transform 0.1s ease, box-shadow 0.1s ease; border-left: 4px solid #00695c; }
+.cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.cat-card h2 { margin: 0 0 0.4em; font-size: 1.2em; color: #00695c; }
+.cat-card .cat-pl { color: #888; font-weight: 400; font-size: 0.85em; margin-left: 0.4em; }
+.cat-card .cat-count { margin: 0; color: #555; font-size: 0.95em; }
+.cat-restaurants  { border-left-color: #c62828; } .cat-restaurants  h2 { color: #c62828; }
+.cat-cafes        { border-left-color: #6d4c41; } .cat-cafes        h2 { color: #6d4c41; }
+.cat-bars         { border-left-color: #4527a0; } .cat-bars         h2 { color: #4527a0; }
+.cat-museums      { border-left-color: #6a1b9a; } .cat-museums      h2 { color: #6a1b9a; }
+.cat-family       { border-left-color: #f9a825; } .cat-family       h2 { color: #b87800; }
+.cat-entertainment{ border-left-color: #2e7d32; } .cat-entertainment h2 { color: #2e7d32; }
+.cat-other        { border-left-color: #455a64; } .cat-other        h2 { color: #455a64; }
+.hero-cat.cat-restaurants  { border-bottom-color: #c62828; } .hero-cat.cat-restaurants  h1 { color: #c62828; }
+.hero-cat.cat-cafes        { border-bottom-color: #6d4c41; } .hero-cat.cat-cafes        h1 { color: #6d4c41; }
+.hero-cat.cat-bars         { border-bottom-color: #4527a0; } .hero-cat.cat-bars         h1 { color: #4527a0; }
+.hero-cat.cat-museums      { border-bottom-color: #6a1b9a; } .hero-cat.cat-museums      h1 { color: #6a1b9a; }
+.hero-cat.cat-family       { border-bottom-color: #f9a825; } .hero-cat.cat-family       h1 { color: #b87800; }
+.hero-cat.cat-entertainment{ border-bottom-color: #2e7d32; } .hero-cat.cat-entertainment h1 { color: #2e7d32; }
+.hero-cat.cat-other        { border-bottom-color: #455a64; } .hero-cat.cat-other        h1 { color: #455a64; }
+.venue { background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; padding: 1.2em 1.5em; margin-bottom: 1em; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.venue h2 { margin: 0 0 0.5em; color: #1a1a1a; font-size: 1.2em; }
+.venue p { margin: 0.4em 0; font-size: 0.95em; }
+.venue .label { font-weight: 600; color: #555; margin-right: 0.3em; }
+.venue .label-pl { color: #888; font-weight: 400; }
+.venue .addr-text { color: #333; }
+.venue .links { display: block; margin-top: 0.2em; }
+.venue .links a { display: inline-block; margin-right: 0.6em; font-size: 0.9em; color: #00695c; }
+.venue .opened time { font-weight: 600; color: #444; }
+.venue .route { background: #eef6f4; border-left: 3px solid #00695c; padding: 0.5em 0.8em; margin: 0.4em 0; border-radius: 0 4px 4px 0; }
+.venue .route-text { display: block; margin: 0.2em 0; color: #333; }
+.venue .map-link { font-size: 0.9em; color: #00695c; text-decoration: none; }
+.venue .map-link:hover { text-decoration: underline; }
+.venue .hours-text { color: #333; }
+.venue .info { margin: 0.6em 0 0; padding-top: 0.5em; border-top: 1px solid #f0f0f5; }
+.venue .info-en { color: #1a1a1a; margin: 0.2em 0; }
+.venue .info-pl { color: #666; margin: 0.2em 0; font-size: 0.93em; }
+.notes { margin-top: 2.5em; padding: 1.25em 1.5em; background: #fff; border: 1px solid #e3e3ec; border-radius: 8px; }
+.notes h2 { margin: 0 0 0.8em; color: #00695c; font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: 0.4em; }
+.notes h3 { margin: 0.8em 0 0.3em; color: #555; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.05em; }
+.notes-pl h3 { color: #d32f2f; }
+.notes ul { margin: 0.3em 0 0; padding-left: 1.3em; }
+.notes li { margin: 0.3em 0; font-size: 0.93em; }
+footer { margin-top: 2em; text-align: center; color: #999; font-size: 0.85em; padding-top: 1.5em; border-top: 1px solid #eee; }
+footer a { color: #00695c; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  body { padding: 0 0.8em 2em; }
+  .hero { padding: 1.5em 0 1em; }
+  .hero h1 { font-size: 1.6em; }
+  .venue { padding: 0.9em 1em; }
+  .cat-grid { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <header class="hero hero-cat cat-restaurants">
+    <p class="back"><a href="index.html">&larr; All categories <span class="back-pl">· Wszystkie kategorie</span></a></p>
+    <h1>Restaurants <span class="hero-pl">· Restauracje</span></h1>
+    <p class="hero-meta">Warsaw + agglomeration · Aug 26 – Sep 26 2026 (last 30 days) · upscale / classy · searched 2026-09-26 · 3 venues</p>
+  </header>
+
+  <main>
+    <article class="venue">
+      <h2>Splendido</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Wronia 10, 00-840 Warszawa</span>
+        <span class="links">
+          <a href="https://splendidowarsaw.pl/" target="_blank" rel="noopener">splendidowarsaw.pl</a>
+          <a href="https://www.instagram.com/splendido_warsaw/" target="_blank" rel="noopener">instagram.com/splendido_warsaw</a>
+          <a href="https://week.pl/splendido" target="_blank" rel="noopener">week.pl/splendido</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-09">2026-09</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~15 km, approx. 30 min via al. Sobieskiego, Trasa Łazienkowska and Towarowa.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Wronia+10,+00-840+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, M1 to Świętokrzyska, M2 to Rondo Daszyńskiego, walk ~5 min to Wronia. Total ~55 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Wronia+10" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">hours not published · godziny niepodane</span></p>
+      <div class="info">
+        <p class="info-en">The most talked-about opening of September: a 450-500 m² Italian restaurant on the ground floor of AFI Office House (Towarowa22) by Karol Szafraniec, co-owner of Paradiso, Bocca and Zachodni Brzeg. Interiors by Sojka &amp; Wojciechowski evoke 1970s-80s dolce vita and Italo Disco: business lunches with a seafood-heavy Apennine menu by day, disco ball, neon and DJ evenings by night, with a terrace onto the Towarowa gardens. Reservations via rezerwacje@splendidowarsaw.pl or week.pl; tel. +48 535 757 437.</p>
+        <p class="info-pl">Najgłośniejsze otwarcie września: włoska restauracja o powierzchni 450-500 m² na parterze AFI Office House (Towarowa22), za którą stoi Karol Szafraniec, współwłaściciel Paradiso, Bocca i Zachodniego Brzegu. Wnętrza pracowni Sojka &amp; Wojciechowski nawiązują do dolce vita i Italo Disco lat 70.-80.: w dzień biznesowe lunche z kuchnią Półwyspu Apenińskiego z naciskiem na owoce morza, wieczorem kula dyskotekowa, neony i DJ-e, do tego taras na Ogrody Towarowa. Rezerwacje: rezerwacje@splendidowarsaw.pl lub week.pl; tel. +48 535 757 437.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Salon Flaner</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">Krakowskie Przedmieście 4, 00-333 Warszawa</span>
+        <span class="links">
+          <a href="https://salonflaner.pl/" target="_blank" rel="noopener">salonflaner.pl</a>
+          <a href="https://flanerhotel.com/en/restaurant/" target="_blank" rel="noopener">flanerhotel.com</a>
+          <a href="https://www.instagram.com/salon.flaner/" target="_blank" rel="noopener">instagram.com/salon.flaner</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-08">2026-08</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~12 km, approx. 25 min via al. Sobieskiego, Belwederska, Al. Ujazdowskie and Nowy Świat.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=Krakowskie+Przedmie%C5%9Bcie+4,+00-333+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus 116 from Sarmacka direct along Sobieskiego and Nowy Świat to the Uniwersytet stop on Krakowskie Przedmieście, walk ~2 min. Total ~40 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Krakowskie+Przedmie%C5%9Bcie+4" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">Mon-Sun 12:00–22:00 (last kitchen orders 21:30)</span></p>
+      <div class="info">
+        <p class="info-en">The à la carte restaurant of the new boutique Flaner Hotel (WorldHotels Crafted) on the Royal Route, headed by chef Paweł Rosiński. The kitchen revives pre-war Warsaw recipes in an unhurried, white-tablecloth register: Warsaw-style beef tripe, fried pike-perch, pierogi with beef cheek and slow-roasted pork ribs to share, paired with a curated list of Polish wines, craft beers, vodkas and nalewki. Dishes 35-120 PLN; Zwierciadło cocktail bar next door. Warsaw Foodie lists the entrance at ul. Kopernika 4.</p>
+        <p class="info-pl">Restauracja à la carte nowego butikowego Flaner Hotel (WorldHotels Crafted) przy Trakcie Królewskim, prowadzona przez szefa kuchni Pawła Rosińskiego. Kuchnia wskrzesza przedwojenne warszawskie receptury w niespiesznym, "obrusowym" wydaniu: flaczki wołowe po warszawsku, smażony sandacz, pierogi z policzkiem wołowym i wolno pieczone żeberka do dzielenia, do tego dobrana kolekcja polskich win, browarów rzemieślniczych, wódek i nalewek. Dania 35-120 zł; obok bar koktajlowy Zwierciadło. Warsaw Foodie podaje wejście od ul. Kopernika 4.</p>
+      </div>
+    </article>
+
+    <article class="venue">
+      <h2>Fado</h2>
+      <p class="addr">
+        <span class="label">Address <span class="label-pl">· Adres</span>:</span>
+        <span class="addr-text">ul. Próżna 12, 00-107 Warszawa</span>
+        <span class="links">
+          <a href="https://www.instagram.com/fado.prozna/" target="_blank" rel="noopener">instagram.com/fado.prozna</a>
+          <a href="https://warsawfoodie.pl/2026/09/fado-nowa-restauracja-portugalska-przy-proznej/" target="_blank" rel="noopener">warsawfoodie.pl</a>
+        </span>
+      </p>
+      <p class="opened"><span class="label">Opened <span class="label-pl">· Otwarcie</span>:</span> <time datetime="2026-08">2026-08</time></p>
+      <p class="route route-car">
+        <span class="label">By car <span class="label-pl">· Samochodem</span>:</span>
+        <span class="route-text">~13 km, approx. 28 min via al. Sobieskiego, al. Niepodległości and Marszałkowska.</span>
+        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=ul.+Sarmacka+11,+Warszawa&amp;destination=ul.+Pr%C3%B3%C5%BCna+12,+Warszawa&amp;travelmode=driving" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      </p>
+      <p class="route route-pt">
+        <span class="label">By public transport <span class="label-pl">· Transportem publicznym</span>:</span>
+        <span class="route-text">Bus from Sarmacka to Metro Wilanowska, M1 to Świętokrzyska, walk ~7 min via Plac Grzybowski. Total ~45 min.</span>
+        <a class="map-link" href="https://jakdojade.pl/warszawa/trasa/?fc=Sarmacka+11&amp;tc=Pr%C3%B3%C5%BCna+12" target="_blank" rel="noopener">Open in jakdojade &rarr;</a>
+      </p>
+      <p class="hours"><span class="label">Open <span class="label-pl">· Czynne</span>:</span> <span class="hours-text">Mon-Sun 11:00–22:00</span></p>
+      <div class="info">
+        <p class="info-en">Portuguese restaurant on restored Próżna street by Luis Sobral from Beja in Alentejo, who also runs the Adega Sobral wine bar and deli in Stare Babice. Regional classics rather than fusion: bitoque, francesinha, grilled octopus, whole roasted sea bream and pastéis de nata, with Portuguese wines. Dishes 30-180 PLN; tel. 604 619 100.</p>
+        <p class="info-pl">Portugalska restauracja przy odrestaurowanej ulicy Próżnej, prowadzona przez Luisa Sobrala z Beja w Alentejo, właściciela winiarni i delikatesów Adega Sobral w Starych Babicach. Regionalne klasyki zamiast fusion: bitoque, francesinha, grillowana ośmiornica, pieczona dorada w całości i pastéis de nata, do tego portugalskie wina. Dania 30-180 zł; tel. 604 619 100.</p>
+      </div>
+    </article>
+  </main>
+
+  <section class="notes">
+    <h2>Notes · Uwagi</h2>
+    <div class="notes-en"><h3>EN</h3><ul>
+      <li>Thin month for openings that qualify as "classy": the big-name projects (Nów, Wandal, Rozdział, Maestro by Andrea Camastra) all opened earlier in 2026 and fall outside the window. Consider widening to 3 months.</li>
+      <li>Just outside the window but still fresh and worth knowing: Nostra (Italian, ul. Foksal 21, July 2026, truffle pasta and gourmet pizza), Harvest (seasonal Polish, Elektrownia Powiśle, June 2026), Masuda Chaho (Kyoto tea house and restaurant, ul. Poznańska 16, July 2026), Charlotte Bouillon (French bouillon, ul. Złota 83, July 2026).</li>
+      <li>Splendido: opening date confirmed only as "early September" from press pieces dated 2026-09-03/04 (Retailnet, Horecatrends, Życie Stolicy); no exact day and no published hours yet. Call or use the week.pl link before going.</li>
+      <li>Salon Flaner: Warsaw Foodie (2026-08-29) says it opened in August; the exact day was not published. Address taken from the hotel's own site; Warsaw Foodie gives ul. Kopernika 4 (the side entrance of the same building).</li>
+      <li>Fado: Warsaw Foodie (2026-09-25) says it opened "at the end of August"; no exact day. Instagram profile could not be read (no login), so the Foodie article is the canonical source.</li>
+      <li>Dropped: Niby (Al. Solidarności 64, August) is a breakfast-to-18:00 café-restaurant hybrid and belongs in Cafes; Supper Bar (Żoliborz, late July) is a wine bar; Schabowy (Saska Kępa) is a relocation of a 2017 restaurant; Kokoro Ramen, Papa Lee's and the others above opened before 2026-08-26.</li>
+      <li>Dropped: the Browary Warszawskie cluster (Japonka, Gastronomja, Browar Warszawski, Food Hall Browary) surfaces in searches with September opening dates, but those are September 2021 openings, not 2026.</li>
+      <li>Unverified: Maestro by Andrea Camastra (Ethos, Plac Trzech Krzyży) was announced for before summer 2026; no source confirmed the actual opening date, so it is not listed. Pan Królik (Wilanów, al. Rzeczypospolitej 2a) is listed as "new" on cowwilanowie.pl but no opening date could be found.</li>
+      <li>Public transport routes are estimates; click the jakdojade link for the live timetable and exact transfers.</li>
+    </ul></div>
+    <div class="notes-pl"><h3>PL</h3><ul>
+      <li>Chudy miesiąc, jeśli chodzi o otwarcia "z klasą": głośne projekty (Nów, Wandal, Rozdział, Maestro Andrei Camastry) otworzyły się wcześniej w 2026 r. i wypadają poza okno. Warto rozszerzyć wyszukiwanie do 3 miesięcy.</li>
+      <li>Tuż poza oknem, ale wciąż świeże i warte uwagi: Nostra (włoska, ul. Foksal 21, lipiec 2026, makarony z truflą i pizza gourmet), Harvest (sezonowa kuchnia polska, Elektrownia Powiśle, czerwiec 2026), Masuda Chaho (kiotyjska herbaciarnia i restauracja, ul. Poznańska 16, lipiec 2026), Charlotte Bouillon (francuski bouillon, ul. Złota 83, lipiec 2026).</li>
+      <li>Splendido: data otwarcia potwierdzona tylko jako "początek września" na podstawie publikacji z 3-4.09.2026 (Retailnet, Horecatrends, Życie Stolicy); brak dokładnego dnia i opublikowanych godzin. Przed wizytą zadzwoń lub skorzystaj z linku week.pl.</li>
+      <li>Salon Flaner: Warsaw Foodie (29.08.2026) pisze o otwarciu w sierpniu; dokładny dzień nie został podany. Adres ze strony hotelu; Warsaw Foodie podaje ul. Kopernika 4 (boczne wejście tego samego budynku).</li>
+      <li>Fado: Warsaw Foodie (25.09.2026) podaje otwarcie "pod koniec sierpnia"; brak dokładnego dnia. Profilu na Instagramie nie dało się odczytać (brak logowania), więc źródłem kanonicznym jest artykuł Foodie.</li>
+      <li>Odrzucone: Niby (al. Solidarności 64, sierpień) to hybryda kawiarni i restauracji czynna do 18:00 i należy do kategorii Kawiarnie; Supper Bar (Żoliborz, koniec lipca) to wine bar; Schabowy (Saska Kępa) to przeprowadzka restauracji z 2017 r.; Kokoro Ramen, Papa Lee's i pozostałe wymienione wyżej otworzyły się przed 26.08.2026.</li>
+      <li>Odrzucone: kompleks Browarów Warszawskich (Japonka, Gastronomja, Browar Warszawski, Food Hall Browary) pojawia się w wynikach z wrześniowymi datami otwarcia, ale to otwarcia z września 2021, nie 2026.</li>
+      <li>Niezweryfikowane: Maestro Andrei Camastry (Ethos, plac Trzech Krzyży) zapowiadano na okres przed wakacjami 2026; żadne źródło nie potwierdziło faktycznej daty otwarcia, więc nie jest na liście. Pan Królik (Wilanów, al. Rzeczypospolitej 2a) figuruje jako "nowe" na cowwilanowie.pl, ale nie udało się ustalić daty otwarcia.</li>
+      <li>Trasy komunikacją miejską są szacunkowe; kliknij link jakdojade, aby zobaczyć aktualny rozkład i dokładne przesiadki.</li>
+    </ul></div>
+  </section>
+
+  <footer>
+    <p><a href="index.html">&larr; All categories · Wszystkie kategorie</a></p>
+  </footer>
+</body>
+</html>
